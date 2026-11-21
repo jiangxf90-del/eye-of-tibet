@@ -9,7 +9,7 @@
     <title>Eye of Tibet — Tibetan Culture, Dzi Beads & Thangka Art</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
       :root{
         --bg:#f5eee0;
@@ -923,6 +923,140 @@
       .foot-pays{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px}
       .foot-pays span{border:1px solid var(--line-strong); font-size:12px; letter-spacing:.08em; padding:4px 9px; color:var(--muted); font-family:"Marcellus",serif}
     </style>
+    <style>
+      /* ============================================================
+         TYPOGRAPHY — elegant editorial serif + clean modern sans
+         Display (headings, product names, prices, intentions):
+           Cormorant Garamond · Noto Serif SC / TC
+         Text & UI (body, buttons, nav, labels, captions):
+           Inter · Noto Sans SC / TC
+         System serif / sans-serif fallbacks keep the page intact
+         if the webfonts fail to load. Colours & layout untouched.
+         ============================================================ */
+      :root{
+        --font-display:"Cormorant Garamond","Noto Serif SC","Noto Serif TC",Georgia,"Times New Roman",serif;
+        --font-sans:"Inter","Noto Sans SC","Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      }
+      body{font-family:var(--font-sans); font-size:17.5px; line-height:1.7; letter-spacing:.01em}
+      h1,h2,h3,h4,.display{font-family:var(--font-display); font-weight:500; line-height:1.22}
+      .tib{font-family:"Noto Serif Tibetan","Cormorant Garamond","Noto Serif SC","Noto Serif TC",serif}
+
+      /* ---------- brand ---------- */
+      .brand .name{font-family:var(--font-display); font-weight:600; letter-spacing:.14em}
+      .brand .sub{font-family:var(--font-sans); font-weight:500}
+
+      /* ---------- UI text → sans ---------- */
+      nav.main a,.nav-top,.cart-btn,.btn,.small-btn,.kicker,.lang-btn,.menu-btn,
+      .chip,.opt-btn,.acc-head,.quiz-opt,.eye-btn,.step .num,.mega h5,
+      .announce,.filter-note,figcaption,.drawer label,.opt-label,.piece .tag,
+      .series .s-cap span,.intent .go,.path-card .go,.pay-icons span,.foot-pays span,
+      .bless-point p,.trust-row span,.pv-bless p,.spec dl,.rev p,.rev .r-name{
+        font-family:var(--font-sans);
+      }
+      .kicker,.btn,.step .num,.mega h5{font-weight:600}
+      input,textarea,select,button{font-family:inherit}
+
+      /* ---------- display moments → serif, lighter & airier ---------- */
+      h2.title{font-size:clamp(36px,5vw,58px)}
+      .shop-head h2{font-size:clamp(32px,4.6vw,50px)}
+      .hero h1{font-weight:500}
+      .hero .tagline{font-family:var(--font-display); font-weight:500}
+      .standfirst{font-family:var(--font-display); font-weight:500; font-size:22.5px; line-height:1.62}
+      .piece h3,.intent h3,.path-card h3,.deity h3,.eye-panel h3,.rec h5,
+      .pv-body h3,.drawer header h3,.pmodal h3,.quiz-band h2,.shop-head h2,
+      .bless-point h4,.pv-bless h4,.bundle h4,.series .s-cap h3{
+        font-family:var(--font-display); font-weight:500;
+      }
+      .piece .price b,.pv-price,.drawer .total,.c-item .ci-price,.rec span{
+        font-family:var(--font-display);
+      }
+      .pv-price{font-weight:600}
+      .piece .price b{font-weight:600; font-size:20px}
+    </style>
+    <style>
+      /* ============================================================
+         CHECKOUT — single page, Buddha & Karma / Shopify pattern:
+         express checkout → contact → delivery → shipping →
+         payment → (confirmation, shown only after a real payment).
+         Online payment is NOT connected yet: card & PayPal actions
+         open a clearly-labelled notice and offer WhatsApp ordering.
+         ============================================================ */
+      .checkout{position:fixed; inset:0; z-index:98; background:var(--bg); overflow-y:auto; display:none}
+      .checkout.open{display:block}
+      #confirmView{z-index:99}
+      .co-head{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:2}
+      .co-head-in{display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:16px; padding-bottom:16px}
+      .co-brand{font-family:var(--font-display); font-weight:600; letter-spacing:.14em; font-size:20px; white-space:nowrap}
+      .co-back{background:none; border:0; cursor:pointer; font-family:var(--font-sans); font-size:15px; color:var(--maroon); padding:6px 0; white-space:nowrap}
+      .co-back:hover{text-decoration:underline; text-underline-offset:4px}
+      .co-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:56px; padding-top:36px; padding-bottom:80px; align-items:start}
+      @media (max-width:900px){ .co-grid{grid-template-columns:1fr; gap:34px} .co-summary{order:-1} }
+      .co-title{font-size:clamp(32px,4.4vw,44px); margin-bottom:4px}
+      .co-sec{border-top:1px solid var(--line); padding:26px 0 8px; margin-top:22px}
+      .co-sec h3{font-size:24px; margin-bottom:16px; display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap}
+      .co-sec h3 .login-note{font-family:var(--font-sans); font-size:14.5px; color:var(--muted); font-weight:400}
+      .co-sec h3 .login-note a{color:var(--maroon)}
+      .express-row{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+      @media (max-width:560px){ .express-row{grid-template-columns:1fr} }
+      .express-btn{cursor:pointer; border:1px solid var(--line-strong); background:var(--surface); padding:13px 10px; font-family:var(--font-sans); font-size:16px; font-weight:600; letter-spacing:.02em; color:var(--ink)}
+      .express-btn:hover{border-color:var(--ink)}
+      .ex-paypal{color:#003087; font-style:italic}
+      .ex-shop{color:#4a1fb8}
+      .ex-gpay{color:#3c4043}
+      .or-line{display:flex; align-items:center; gap:14px; margin:22px 0 2px; color:var(--muted); font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-family:var(--font-sans)}
+      .or-line::before,.or-line::after{content:""; flex:1; height:1px; background:var(--line)}
+      .f-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+      .f-grid .full{grid-column:1 / -1}
+      @media (max-width:560px){ .f-grid{grid-template-columns:1fr} }
+      .f-field label{display:block; font-size:13.5px; letter-spacing:.05em; color:var(--muted); margin-bottom:5px; font-family:var(--font-sans)}
+      .f-field input,.f-field select,.f-field textarea{
+        width:100%; font-family:var(--font-sans); font-size:16px; padding:11px 13px;
+        border:1px solid var(--line-strong); border-radius:0; background:var(--surface); color:var(--ink);
+      }
+      .f-field input:focus,.f-field select:focus,.f-field textarea:focus{outline:2px solid var(--gold); border-color:var(--gold)}
+      .f-field.invalid input,.f-field.invalid select{border-color:#b3342a}
+      .f-err{display:none; color:#b3342a; font-size:13.5px; margin-top:4px; font-family:var(--font-sans)}
+      .f-field.invalid .f-err{display:block}
+      .ship-wait{color:var(--muted); font-size:16px; border:1px dashed var(--line-strong); padding:16px 18px; margin:0 0 14px}
+      .ship-opt{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--gold); background:var(--surface); padding:15px 17px; margin-bottom:14px}
+      .ship-dot{flex:none; width:16px; height:16px; border-radius:50%; border:2px solid var(--maroon); margin-top:4px; position:relative}
+      .ship-dot::after{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--maroon)}
+      .ship-info{flex:1; min-width:0}
+      .ship-info b{display:block; font-size:16.5px; font-family:var(--font-sans); font-weight:600}
+      .ship-info span{font-size:14.5px; color:var(--muted)}
+      .pay-opt{border:1px solid var(--line-strong); background:var(--surface); margin-bottom:14px}
+      .pay-head{display:flex; align-items:center; gap:10px; padding:15px 17px; cursor:pointer; font-size:17px; font-family:var(--font-sans)}
+      .pay-head input{accent-color:var(--maroon); width:17px; height:17px; flex:none}
+      .pay-head .pay-cards{margin-left:auto; font-size:12px; letter-spacing:.08em; color:var(--muted); white-space:nowrap}
+      .pay-body{border-top:1px solid var(--line); padding:17px}
+      .pay-body p{font-size:15.5px; color:var(--ink-soft); margin:0}
+      .soon{font-size:13px; color:var(--muted); letter-spacing:.04em; font-family:var(--font-sans)}
+      .co-pay{width:100%; justify-content:center; margin-top:20px}
+      .co-under{text-align:center; margin-top:12px}
+      .co-summary{background:var(--surface); border:1px solid var(--line); padding:26px 28px; position:sticky; top:86px}
+      @media (max-width:900px){ .co-summary{position:static} }
+      .co-summary h3{font-size:23px; margin-bottom:8px}
+      .co-item{display:flex; gap:14px; align-items:center; padding:10px 0; border-bottom:1px solid var(--line)}
+      .co-item .thumb{position:relative; flex:none}
+      .co-item img{width:58px; height:58px; object-fit:cover}
+      .co-item .qty-badge{position:absolute; top:-8px; right:-8px; background:var(--ink); color:var(--bg); font-size:12px; min-width:20px; height:20px; border-radius:999px; display:flex; align-items:center; justify-content:center; padding:0 5px; font-family:var(--font-sans)}
+      .co-item .ci-name{flex:1; font-size:16px; line-height:1.35; min-width:0}
+      .co-item .ci-price{font-family:var(--font-display); font-weight:600; white-space:nowrap}
+      .co-summary .rowline{display:flex; justify-content:space-between; gap:14px; font-size:16px; color:var(--ink-soft); margin-top:10px; font-family:var(--font-sans)}
+      .co-summary .rowline b{font-weight:600; white-space:nowrap}
+      .co-summary .total{display:flex; justify-content:space-between; gap:14px; font-size:21px; margin-top:12px; border-top:1px solid var(--line); padding-top:14px; font-family:var(--font-display)}
+      .co-summary .total b{font-weight:600}
+      .co-tax-note{font-size:13.5px; color:var(--muted); margin-top:10px}
+      .pay-notice{z-index:110}
+      /* order confirmation (future: shown only after a real payment succeeds) */
+      .cf-check{width:64px; height:64px; border:1.5px solid var(--wa); color:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto 18px}
+      .cf-sub{text-align:center; font-size:20px; color:var(--ink-soft); margin-bottom:4px}
+      .cf-order{text-align:center; color:var(--muted); margin-bottom:4px}
+      .cf-mail{text-align:center; color:var(--muted); font-size:16px}
+      .cf-box{border:1px solid var(--gold); background:var(--surface); padding:22px 26px; margin:26px 0}
+      .cf-box h3{font-size:22px; margin-bottom:8px}
+      .cf-box p{color:var(--ink-soft); margin:0}
+    </style>
   </head>
   <body>
     <div class="flags" aria-hidden="true"><span class="b"></span><span class="w"></span><span class="r"></span><span class="g"></span><span class="y"></span></div>
@@ -1643,6 +1777,7 @@
         <div class="rowline" id="shipRow"><span>Shipping</span><b id="cartShipping">$4.95</b></div>
         <div class="total"><span>Total</span><b id="cartTotal">$0</b></div>
         <div class="bless-line"><span aria-hidden="true">✦</span><span><b>Temple blessing included free.</b> Every piece in your order is blessed by a living Buddha, with its own blessing video &amp; photos — no charge, ever.</span></div>
+        <button class="btn btn-maroon" id="goCheckout" style="width:100%; justify-content:center; margin-top:14px">Checkout</button>
         <label for="buyerName">Your name (optional)</label>
         <input id="buyerName" type="text" autocomplete="name" placeholder="e.g. Anna Meyer" />
         <label for="buyerNote">Note for us (optional)</label>
@@ -1677,6 +1812,249 @@
       <div class="sheet">
         <button class="m-close" id="quizClose" aria-label="Close">✕</button>
         <div id="quizBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ CHECKOUT (single page) ============ -->
+    <div class="checkout" id="checkoutView" role="dialog" aria-modal="true" aria-label="Checkout">
+      <div class="co-head">
+        <div class="wrap co-head-in">
+          <span class="co-brand">EYE OF TIBET</span>
+          <button type="button" class="co-back" id="coBack">← Back to cart</button>
+        </div>
+      </div>
+      <div class="wrap co-grid">
+        <div class="co-main">
+          <h2 class="co-title">Checkout</h2>
+
+          <div class="co-sec" style="border-top:0; margin-top:10px; padding-top:10px">
+            <h3>Express checkout</h3>
+            <div class="express-row">
+              <button type="button" class="express-btn ex-paypal" data-express>PayPal</button>
+              <button type="button" class="express-btn ex-shop" data-express>Shop&nbsp;Pay</button>
+              <button type="button" class="express-btn ex-gpay" data-express>Google&nbsp;Pay</button>
+            </div>
+            <div class="or-line"><span>or continue below</span></div>
+          </div>
+
+          <div class="co-sec">
+            <h3>Contact <span class="login-note">Already have an account? <a href="#" id="coLogin">Log in</a></span></h3>
+            <div class="f-grid">
+              <div class="f-field full">
+                <label for="coEmail">Email address</label>
+                <input id="coEmail" type="email" autocomplete="email" placeholder="Email address" />
+                <div class="f-err"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="co-sec">
+            <h3>Delivery</h3>
+            <div class="f-grid">
+              <div class="f-field full">
+                <label for="coCountry">Country / Region</label>
+                <select id="coCountry" autocomplete="country-name">
+                  <option value="">Country / Region</option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                  <option>United Kingdom</option>
+                  <option>Ireland</option>
+                  <option>Germany</option>
+                  <option>France</option>
+                  <option>Spain</option>
+                  <option>Italy</option>
+                  <option>Netherlands</option>
+                  <option>Belgium</option>
+                  <option>Switzerland</option>
+                  <option>Austria</option>
+                  <option>Sweden</option>
+                  <option>Norway</option>
+                  <option>Denmark</option>
+                  <option>Finland</option>
+                  <option>Poland</option>
+                  <option>Portugal</option>
+                  <option>Greece</option>
+                  <option>Australia</option>
+                  <option>New Zealand</option>
+                  <option>Japan</option>
+                  <option>South Korea</option>
+                  <option>Singapore</option>
+                  <option>Malaysia</option>
+                  <option>Indonesia</option>
+                  <option>Thailand</option>
+                  <option>Vietnam</option>
+                  <option>Philippines</option>
+                  <option>India</option>
+                  <option>United Arab Emirates</option>
+                  <option>Israel</option>
+                  <option>South Africa</option>
+                  <option>Brazil</option>
+                  <option>Argentina</option>
+                  <option>Chile</option>
+                  <option>China</option>
+                  <option>Hong Kong</option>
+                  <option>Taiwan</option>
+                  <option>Other</option>
+                </select>
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field">
+                <label for="coFirst">First name</label>
+                <input id="coFirst" type="text" autocomplete="given-name" placeholder="First name" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field">
+                <label for="coLast">Last name</label>
+                <input id="coLast" type="text" autocomplete="family-name" placeholder="Last name" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field full">
+                <label for="coCompany">Company (optional)</label>
+                <input id="coCompany" type="text" autocomplete="organization" placeholder="Company (optional)" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field full">
+                <label for="coAddress">Street address</label>
+                <input id="coAddress" type="text" autocomplete="street-address" placeholder="Street address" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field full">
+                <label for="coApt">Apartment, suite, etc. (optional)</label>
+                <input id="coApt" type="text" placeholder="Apartment, suite, etc. (optional)" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field">
+                <label for="coCity">City</label>
+                <input id="coCity" type="text" autocomplete="address-level2" placeholder="City" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field">
+                <label for="coState">State / Province</label>
+                <input id="coState" type="text" autocomplete="address-level1" placeholder="State / Province" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field">
+                <label for="coZip">ZIP / Postal code</label>
+                <input id="coZip" type="text" autocomplete="postal-code" placeholder="ZIP / Postal code" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field">
+                <label for="coPhone">Phone</label>
+                <input id="coPhone" type="tel" autocomplete="tel" placeholder="Phone" />
+                <div class="f-err"></div>
+              </div>
+              <div class="f-field full">
+                <label for="coNote">Order note (optional)</label>
+                <textarea id="coNote" rows="2" placeholder="Order note (optional)"></textarea>
+                <div class="f-err"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="co-sec">
+            <h3>Shipping method</h3>
+            <div id="shipMethodBox">
+              <p class="ship-wait">Enter your delivery address to see shipping options.</p>
+            </div>
+          </div>
+
+          <div class="co-sec">
+            <h3>Payment</h3>
+            <div class="pay-opt">
+              <label class="pay-head">
+                <input type="radio" name="payMethod" value="card" checked />
+                <span>Credit card</span>
+                <span class="pay-cards">VISA · MASTERCARD · AMEX</span>
+              </label>
+              <div class="pay-body" id="cardFields">
+                <div class="f-grid">
+                  <div class="f-field full">
+                    <label for="coCardNum">Card number</label>
+                    <input id="coCardNum" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 1234 1234 1234" />
+                    <div class="f-err"></div>
+                  </div>
+                  <div class="f-field">
+                    <label for="coCardExp">Expiration date (MM / YY)</label>
+                    <input id="coCardExp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" />
+                    <div class="f-err"></div>
+                  </div>
+                  <div class="f-field">
+                    <label for="coCardCvc">Security code</label>
+                    <input id="coCardCvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVC" />
+                    <div class="f-err"></div>
+                  </div>
+                  <div class="f-field full">
+                    <label for="coCardName">Name on card</label>
+                    <input id="coCardName" type="text" autocomplete="cc-name" placeholder="Name on card" />
+                    <div class="f-err"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pay-opt">
+              <label class="pay-head">
+                <input type="radio" name="payMethod" value="paypal" />
+                <span>PayPal</span>
+              </label>
+              <div class="pay-body" id="paypalNote" hidden>
+                <p>You will be redirected to PayPal to complete your purchase.</p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-maroon co-pay" id="coPayNow">Pay now</button>
+            <p class="co-under soon">PayPal checkout coming soon</p>
+            <p class="co-under" style="font-size:14.5px; color:var(--muted)">Card payments are processed through PayPal's guest checkout — you can pay by card without a PayPal account.</p>
+          </div>
+        </div>
+
+        <aside class="co-summary" aria-label="Order summary">
+          <h3>Order summary</h3>
+          <div id="coItems"></div>
+          <div class="bless-line"><span aria-hidden="true">✦</span><span><b>Temple blessing included free.</b> Every piece in your order is blessed by a living Buddha, with its own blessing video &amp; photos — no charge, ever.</span></div>
+          <div class="rowline"><span>Subtotal</span><b id="coSubtotal">$0</b></div>
+          <div class="rowline"><span>Shipping</span><b id="coShipping">Enter your address</b></div>
+          <div class="rowline"><span>Estimated taxes</span><b id="coTaxes">—</b></div>
+          <div class="total"><span>Total</span><b id="coTotal">$0</b></div>
+          <p class="co-tax-note">Import duties for your country, if any, are confirmed with you personally before payment.</p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ============ ONLINE PAYMENT NOTICE (placeholder until PayPal is connected) ============ -->
+    <div class="pmodal pay-notice" id="payNotice" role="dialog" aria-modal="true" aria-label="Online payment">
+      <div class="sheet">
+        <button class="m-close" id="payNoticeClose" aria-label="Close">✕</button>
+        <h3>Online payment is coming soon</h3>
+        <p>Online payment isn't open yet. You can place this order right now on WhatsApp instead — we confirm availability, the temple blessing and delivery with you personally, and arrange payment together.</p>
+        <button type="button" class="btn btn-wa" id="payNoticeWa" style="width:100%; justify-content:center; margin-top:8px">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91A9.86 9.86 0 0 0 12.04 2m0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.24c0 4.55-3.7 8.24-8.24 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.58 1.74-1.14.27-.56.27-1.04.19-1.14-.08-.1-.23-.16-.48-.28"/></svg>
+          Order on WhatsApp
+        </button>
+        <p class="soon" style="text-align:center; margin-top:14px">PayPal checkout coming soon</p>
+      </div>
+    </div>
+
+    <!-- ============ ORDER CONFIRMATION (structure only — shown solely after a real payment succeeds, via showConfirmation()) ============ -->
+    <div class="checkout" id="confirmView" role="dialog" aria-modal="true" aria-label="Order confirmation">
+      <div class="co-head">
+        <div class="wrap co-head-in">
+          <span class="co-brand">EYE OF TIBET</span>
+        </div>
+      </div>
+      <div class="wrap" style="max-width:760px; padding-top:56px; padding-bottom:80px">
+        <div class="cf-check" aria-hidden="true">✓</div>
+        <h2 class="co-title" style="text-align:center">Thank you</h2>
+        <p class="cf-sub">Your order is confirmed.</p>
+        <p class="cf-order">Order <b id="cfOrderNo">#EOT-0000</b></p>
+        <p class="cf-mail">A confirmation has been sent to your email.</p>
+        <div class="cf-box">
+          <h3>What happens next</h3>
+          <p>Before your piece travels, it is placed on a temple altar in Tibet and blessed in person by a rinpoche — a living Buddha. The video and photographs of your piece's own blessing ceremony are sent to you, and travel with the piece. We will write to you with the blessing date and tracking as soon as your piece leaves the temple.</p>
+        </div>
+        <div id="cfItems"></div>
+        <div style="text-align:center; margin-top:30px">
+          <button type="button" class="btn btn-outline" id="cfContinue">Continue shopping</button>
+        </div>
       </div>
     </div>
 
@@ -2167,6 +2545,7 @@
         closeBtn.addEventListener("click", closeAll);
         document.getElementById("waOrder").addEventListener("click", handleWaOrder);
         document.getElementById("copyOrder").addEventListener("click", handleCopyOrder);
+        document.getElementById("goCheckout").addEventListener("click", openCheckout);
         renderCart();
       }
       function openCart(){ buildDrawer(); drawer.classList.add("open"); scrim.classList.add("open"); }
@@ -2458,6 +2837,215 @@
       document.addEventListener("keydown", function(e){ if (e.key === "Escape"){ closePolicy(); closeQuiz(); } });
 
       renderCart();
+    </script>
+    <script>
+      /* ================= Checkout (single page) =================
+         Structure follows Buddha & Karma's Shopify checkout:
+         express checkout → contact → delivery → shipping → payment.
+         Online payment is NOT connected yet (no PayPal business
+         account / Client ID), so no payment SDK is loaded and no
+         charge is ever simulated: express buttons, the PayPal
+         option and "Pay now" all open a clearly-labelled notice
+         that offers WhatsApp ordering instead. When PayPal is
+         connected, card payment runs through PayPal's guest card
+         checkout, and only a real successful payment may call
+         showConfirmation(). */
+      var checkoutView = document.getElementById("checkoutView");
+      var confirmView = document.getElementById("confirmView");
+      var payNotice = document.getElementById("payNotice");
+      function coEl(id){ return document.getElementById(id); }
+      function coVal(id){ var el = coEl(id); return el ? el.value.trim() : ""; }
+
+      var CO_REQUIRED = ["coCountry","coFirst","coLast","coAddress","coCity","coState","coZip","coPhone"];
+      function addrComplete(){
+        return CO_REQUIRED.every(function(id){ return coVal(id) !== ""; });
+      }
+      function markField(input, ok, msg){
+        var f = input.closest ? input.closest(".f-field") : null;
+        if (f){
+          f.classList.toggle("invalid", !ok);
+          var err = f.querySelector(".f-err");
+          if (err) err.textContent = ok ? "" : (msg || "This field is required.");
+        }
+        return ok;
+      }
+      function refreshShipUI(){
+        var t = cartTotals();
+        var box = coEl("shipMethodBox");
+        if (addrComplete()){
+          box.innerHTML =
+            "<div class='ship-opt'><span class='ship-dot' aria-hidden='true'></span>" +
+            "<div class='ship-info'><b>Standard worldwide shipping</b>" +
+            "<span>Dispatched after your piece's temple blessing, with tracking.</span></div>" +
+            "<b>" + (t.ship === 0 ? "FREE" : money(t.ship)) + "</b></div>";
+        } else {
+          box.innerHTML = "<p class='ship-wait'>Enter your delivery address to see shipping options.</p>";
+        }
+        var shipEl = coEl("coShipping"), taxEl = coEl("coTaxes");
+        if (addrComplete()){
+          shipEl.textContent = t.ship === 0 ? "FREE" : money(t.ship);
+          taxEl.textContent = money(0);
+          coEl("coTotal").textContent = money(t.total);
+        } else {
+          shipEl.textContent = "Enter your address";
+          taxEl.textContent = "—";
+          coEl("coTotal").textContent = money(t.sub);
+        }
+        if (typeof __apply === "function" && typeof __lang !== "undefined" && __lang !== "en") __apply(__lang);
+      }
+      function renderCheckoutSummary(){
+        var t = cartTotals();
+        var box = coEl("coItems");
+        box.innerHTML = "";
+        t.items.forEach(function(x){
+          var row = document.createElement("div");
+          row.className = "co-item";
+          row.innerHTML =
+            "<div class='thumb'><img src='" + x.p.img + "' alt='' /><span class='qty-badge'>" + x.qty + "</span></div>" +
+            "<div class='ci-name'>" + x.p.name + "</div>" +
+            "<div class='ci-price'>" + money(x.p.price * x.qty) + "</div>";
+          box.appendChild(row);
+        });
+        coEl("coSubtotal").textContent = money(t.sub);
+        refreshShipUI();
+      }
+      function openCheckout(){
+        if (!cartList().length){ showToast("Your cart is empty — add a piece first."); return; }
+        closeAll();
+        renderCheckoutSummary();
+        checkoutView.classList.add("open");
+        checkoutView.scrollTop = 0;
+        document.body.style.overflow = "hidden";
+      }
+      function closeCheckout(){
+        checkoutView.classList.remove("open");
+        confirmView.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      coEl("coBack").addEventListener("click", function(){ closeCheckout(); openCart(); });
+      coEl("coLogin").addEventListener("click", function(e){ e.preventDefault(); coEl("coEmail").focus(); });
+
+      /* shipping options + summary update as the address is filled in */
+      CO_REQUIRED.forEach(function(id){
+        coEl(id).addEventListener("input", function(){ markField(this, this.value.trim() !== ""); refreshShipUI(); });
+        coEl(id).addEventListener("change", function(){ markField(this, this.value.trim() !== ""); refreshShipUI(); });
+      });
+      coEl("coEmail").addEventListener("input", function(){
+        if (this.closest(".f-field").classList.contains("invalid")) validateEmail();
+      });
+      function validateEmail(){
+        var v = coVal("coEmail");
+        var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        return markField(coEl("coEmail"), ok, v === "" ? "This field is required." : "Enter a valid email address.");
+      }
+      function validateAddress(){
+        var ok = true, first = null;
+        CO_REQUIRED.forEach(function(id){
+          var el = coEl(id);
+          var good = markField(el, el.value.trim() !== "");
+          if (!good){ ok = false; if (!first) first = el; }
+        });
+        return { ok: ok, first: first };
+      }
+      /* payment method toggle */
+      var payRadios = document.querySelectorAll("input[name='payMethod']");
+      function syncPayMethod(){
+        var method = "card";
+        for (var i = 0; i < payRadios.length; i++){ if (payRadios[i].checked) method = payRadios[i].value; }
+        coEl("cardFields").hidden = method !== "card";
+        coEl("paypalNote").hidden = method !== "paypal";
+        return method;
+      }
+      for (var pi = 0; pi < payRadios.length; pi++) payRadios[pi].addEventListener("change", syncPayMethod);
+      syncPayMethod();
+
+      /* card input formatting (display only — nothing is charged) */
+      coEl("coCardNum").addEventListener("input", function(){
+        var d = this.value.replace(/\D/g, "").slice(0, 19);
+        this.value = d.replace(/(.{4})/g, "$1 ").trim();
+      });
+      coEl("coCardExp").addEventListener("input", function(){
+        var d = this.value.replace(/\D/g, "").slice(0, 4);
+        this.value = d.length > 2 ? d.slice(0, 2) + " / " + d.slice(2) : d;
+      });
+      coEl("coCardCvc").addEventListener("input", function(){
+        this.value = this.value.replace(/\D/g, "").slice(0, 4);
+      });
+      function validateCard(){
+        var ok = true, first = null;
+        function chk(el, good, msg){ var g = markField(el, good, msg); if (!g){ ok = false; if (!first) first = el; } }
+        var num = coEl("coCardNum"), digits = num.value.replace(/\D/g, "");
+        chk(num, digits.length >= 12 && digits.length <= 19, "Enter a valid card number.");
+        var exp = coEl("coCardExp");
+        chk(exp, /^(0[1-9]|1[0-2]) \/ \d{2}$/.test(exp.value.trim()), "Use MM / YY format.");
+        var cvc = coEl("coCardCvc");
+        chk(cvc, /^\d{3,4}$/.test(cvc.value.trim()), "Enter the 3–4 digit code.");
+        var nm = coEl("coCardName");
+        chk(nm, nm.value.trim() !== "", "This field is required.");
+        return { ok: ok, first: first };
+      }
+
+      /* placeholder payment notice — no SDK, no simulated charge */
+      function openPayNotice(){ payNotice.classList.add("open"); }
+      function closePayNotice(){ payNotice.classList.remove("open"); }
+      coEl("payNoticeClose").addEventListener("click", closePayNotice);
+      payNotice.addEventListener("click", function(e){ if (e.target === payNotice) closePayNotice(); });
+      var expressBtns = document.querySelectorAll("[data-express]");
+      for (var ei = 0; ei < expressBtns.length; ei++) expressBtns[ei].addEventListener("click", openPayNotice);
+      coEl("payNoticeWa").addEventListener("click", function(){
+        /* carry the checkout name / note into the WhatsApp order text */
+        var bn = coEl("buyerName"), nt = coEl("buyerNote");
+        var fullName = (coVal("coFirst") + " " + coVal("coLast")).trim();
+        if (bn && fullName) bn.value = fullName;
+        if (nt && coVal("coNote")) nt.value = coVal("coNote");
+        closePayNotice();
+        handleWaOrder();
+      });
+      coEl("coPayNow").addEventListener("click", function(){
+        var firstBad = null;
+        if (!validateEmail()) firstBad = coEl("coEmail");
+        var addr = validateAddress();
+        if (!addr.ok && !firstBad) firstBad = addr.first;
+        var method = syncPayMethod();
+        if (method === "card"){
+          var card = validateCard();
+          if (!card.ok && !firstBad) firstBad = card.first;
+        }
+        if (firstBad){
+          firstBad.scrollIntoView({ behavior: "smooth", block: "center" });
+          firstBad.focus({ preventScroll: true });
+          return;
+        }
+        openPayNotice();
+      });
+      document.addEventListener("keydown", function(e){
+        if (e.key === "Escape"){ closePayNotice(); if (checkoutView.classList.contains("open")) closeCheckout(); }
+      });
+
+      /* Order confirmation — structure ready for the day a real
+         payment succeeds. Nothing in the placeholder flow calls
+         this: there is no fake success path. */
+      function showConfirmation(orderNo){
+        var t = cartTotals();
+        coEl("cfOrderNo").textContent = orderNo;
+        var box = coEl("cfItems");
+        box.innerHTML = "";
+        t.items.forEach(function(x){
+          var row = document.createElement("div");
+          row.className = "co-item";
+          row.innerHTML =
+            "<div class='thumb'><img src='" + x.p.img + "' alt='' /><span class='qty-badge'>" + x.qty + "</span></div>" +
+            "<div class='ci-name'>" + x.p.name + "</div>" +
+            "<div class='ci-price'>" + money(x.p.price * x.qty) + "</div>";
+          box.appendChild(row);
+        });
+        closeCheckout();
+        confirmView.classList.add("open");
+        confirmView.scrollTop = 0;
+        document.body.style.overflow = "hidden";
+        if (typeof __apply === "function" && typeof __lang !== "undefined" && __lang !== "en") __apply(__lang);
+      }
+      coEl("cfContinue").addEventListener("click", closeCheckout);
     </script>
     <script>
       /* ================= Trilingual: EN / 简体中文 / 繁體中文 ================= */
@@ -2967,6 +3555,77 @@
           __st3(msg);
         };
       }
+    </script>
+    <script>
+      /* ===== ZH entries for the checkout (Simplified; Traditional is derived) ===== */
+      __S2T["湾"] = "灣"; __S2T["邮"] = "郵"; __S2T["税"] = "稅"; __S2T["账"] = "賬";
+      __S2T["户"] = "戶"; __S2T["区"] = "區"; __S2T["码"] = "碼"; __S2T["订"] = "訂"; __S2T["购"] = "購";
+      Object.assign(ZH, {
+        "Checkout": "结账",
+        "Back to cart": "返回购物车",
+        "← Back to cart": "← 返回购物车",
+        "Express checkout": "快捷结账",
+        "or continue below": "或在下方继续",
+        "Contact": "联系方式",
+        "Email address": "电子邮箱",
+        "Already have an account?": "已有账号？",
+        "Log in": "登录",
+        "Delivery": "收货地址",
+        "Country / Region": "国家 / 地区",
+        "First name": "名",
+        "Last name": "姓",
+        "Company (optional)": "公司（选填）",
+        "Street address": "街道地址",
+        "Apartment, suite, etc. (optional)": "公寓、门牌号等（选填）",
+        "City": "城市",
+        "State / Province": "州 / 省",
+        "ZIP / Postal code": "邮编",
+        "Phone": "电话",
+        "Order note (optional)": "订单备注（选填）",
+        "Shipping method": "配送方式",
+        "Enter your delivery address to see shipping options.": "填写收货地址后显示配送方式。",
+        "Standard worldwide shipping": "全球标准配送",
+        "Dispatched after your piece's temple blessing, with tracking.": "藏品完成寺庙加持后发出，附物流跟踪。",
+        "Payment": "付款",
+        "Credit card": "信用卡",
+        "Card number": "卡号",
+        "Expiration date (MM / YY)": "有效期（MM / YY）",
+        "Security code": "安全码",
+        "Name on card": "持卡人姓名",
+        "You will be redirected to PayPal to complete your purchase.": "你将被跳转到 PayPal 完成付款。",
+        "Pay now": "立即付款",
+        "PayPal checkout coming soon": "PayPal 结账即将开通",
+        "Card payments are processed through PayPal's guest checkout — you can pay by card without a PayPal account.": "信用卡付款通过 PayPal 的访客结账处理——无需 PayPal 账号即可刷卡付款。",
+        "Order summary": "订单摘要",
+        "Estimated taxes": "预估税费",
+        "Enter your address": "填写地址后计算",
+        "Import duties for your country, if any, are confirmed with you personally before payment.": "如有你所在国家的进口关税，我们会在付款前与你亲自确认。",
+        "This field is required.": "此项为必填。",
+        "Enter a valid email address.": "请输入有效的电子邮箱。",
+        "Enter a valid card number.": "请输入有效的卡号。",
+        "Use MM / YY format.": "请使用 MM / YY 格式。",
+        "Enter the 3–4 digit code.": "请输入 3–4 位安全码。",
+        "Online payment is coming soon": "在线支付即将开通",
+        "Online payment isn't open yet. You can place this order right now on WhatsApp instead — we confirm availability, the temple blessing and delivery with you personally, and arrange payment together.": "在线支付尚未开通。你现在可以通过 WhatsApp 下单——我们会与你亲自确认库存、寺庙加持与配送，并一起安排付款。",
+        "Order on WhatsApp": "通过 WhatsApp 下单",
+        "Thank you": "谢谢你",
+        "Your order is confirmed.": "你的订单已确认。",
+        "Order": "订单",
+        "A confirmation has been sent to your email.": "确认邮件已发送到你的邮箱。",
+        "What happens next": "接下来会发生什么",
+        "Before your piece travels, it is placed on a temple altar in Tibet and blessed in person by a rinpoche — a living Buddha. The video and photographs of your piece's own blessing ceremony are sent to you, and travel with the piece. We will write to you with the blessing date and tracking as soon as your piece leaves the temple.": "在藏品启程之前，它会被供奉在藏地寺庙的佛龛上，由仁波切——一位活佛——亲手加持。这件藏品自身加持仪式的视频与照片会发送给你，并随藏品一同交付。藏品离开寺庙时，我们会写信告诉你加持日期与物流信息。",
+        "Continue shopping": "继续购物",
+        "United States": "美国", "Canada": "加拿大", "Mexico": "墨西哥", "United Kingdom": "英国",
+        "Ireland": "爱尔兰", "Germany": "德国", "France": "法国", "Spain": "西班牙", "Italy": "意大利",
+        "Netherlands": "荷兰", "Belgium": "比利时", "Switzerland": "瑞士", "Austria": "奥地利",
+        "Sweden": "瑞典", "Norway": "挪威", "Denmark": "丹麦", "Finland": "芬兰", "Poland": "波兰",
+        "Portugal": "葡萄牙", "Greece": "希腊", "Australia": "澳大利亚", "New Zealand": "新西兰",
+        "Japan": "日本", "South Korea": "韩国", "Singapore": "新加坡", "Malaysia": "马来西亚",
+        "Indonesia": "印度尼西亚", "Thailand": "泰国", "Vietnam": "越南", "Philippines": "菲律宾",
+        "India": "印度", "United Arab Emirates": "阿联酋", "Israel": "以色列", "South Africa": "南非",
+        "Brazil": "巴西", "Argentina": "阿根廷", "Chile": "智利", "China": "中国",
+        "Hong Kong": "香港", "Taiwan": "台湾", "Other": "其他"
+      });
     </script>
   </body>
 </html>
