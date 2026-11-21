@@ -922,6 +922,8 @@
       footer.site button.flink:hover{color:var(--maroon)}
       .foot-pays{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px}
       .foot-pays span{border:1px solid var(--line-strong); font-size:12px; letter-spacing:.08em; padding:4px 9px; color:var(--muted); font-family:"Marcellus",serif}
+      .foot-pays span.on{color:var(--ink); border-color:var(--gold); background:var(--surface)}
+      .foot-pays span.soon, .pay-icons span.soon{opacity:.52}
     </style>
     <style>
       /* ============================================================
@@ -989,6 +991,8 @@
       .co-brand{font-family:var(--font-display); font-weight:600; letter-spacing:.14em; font-size:20px; white-space:nowrap}
       .co-back{background:none; border:0; cursor:pointer; font-family:var(--font-sans); font-size:15px; color:var(--maroon); padding:6px 0; white-space:nowrap}
       .co-back:hover{text-decoration:underline; text-underline-offset:4px}
+      .co-head-in{flex-wrap:wrap}
+      @media (max-width:560px){ .co-head .lang-btn{padding:7px 10px; font-size:14px} .co-brand{font-size:17px} }
       .co-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:56px; padding-top:36px; padding-bottom:80px; align-items:start}
       @media (max-width:900px){ .co-grid{grid-template-columns:1fr; gap:34px} .co-summary{order:-1} }
       .co-title{font-size:clamp(32px,4.4vw,44px); margin-bottom:4px}
@@ -1724,9 +1728,10 @@
           <div>
             <h4>Eye of Tibet</h4>
             <p>Tibetan culture first: dzi bead heritage, thangka art, and the temple blessing tradition — every piece blessed by a living Buddha before it travels, the blessing always included free.</p>
-            <div class="foot-pays" aria-label="We accept">
-              <span>VISA</span><span>MASTERCARD</span><span>PAYPAL</span><span>APPLE PAY</span><span>WHATSAPP ORDER</span>
+            <div class="foot-pays" aria-label="Payment options">
+              <span class="on">WHATSAPP ORDER</span><span class="soon">VISA — COMING SOON</span><span class="soon">MASTERCARD — COMING SOON</span><span class="soon">PAYPAL — COMING SOON</span>
             </div>
+            <p style="margin-top:10px">Online payment is coming soon — for now, every order is placed on WhatsApp and confirmed personally before anything is paid.</p>
           </div>
           <div>
             <h4>Shop</h4>
@@ -1787,8 +1792,8 @@
           Checkout via WhatsApp
         </button>
         <button class="btn btn-outline" id="copyOrder" style="width:100%; justify-content:center; margin-top:10px">Copy order text instead</button>
-        <div class="pay-icons" aria-label="We accept">
-          <span>VISA</span><span>MASTERCARD</span><span>PAYPAL</span><span>APPLE PAY</span>
+        <div class="pay-icons" aria-label="Payment options">
+          <span>WHATSAPP ORDER</span><span class="soon">VISA — COMING SOON</span><span class="soon">MASTERCARD — COMING SOON</span><span class="soon">PAYPAL — COMING SOON</span>
         </div>
         <p class="checkout-note">You pay nothing now — we confirm your order, blessing and delivery personally on WhatsApp first. 30-day returns.</p>
       </template>
@@ -1820,6 +1825,11 @@
       <div class="co-head">
         <div class="wrap co-head-in">
           <span class="co-brand">EYE OF TIBET</span>
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="zh-Hans">简体</button>
+            <button type="button" class="lang-btn" data-lang="zh-Hant">繁體</button>
+          </div>
           <button type="button" class="co-back" id="coBack">← Back to cart</button>
         </div>
       </div>
@@ -2039,6 +2049,11 @@
       <div class="co-head">
         <div class="wrap co-head-in">
           <span class="co-brand">EYE OF TIBET</span>
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="zh-Hans">简体</button>
+            <button type="button" class="lang-btn" data-lang="zh-Hant">繁體</button>
+          </div>
         </div>
       </div>
       <div class="wrap" style="max-width:760px; padding-top:56px; padding-bottom:80px">
@@ -3299,7 +3314,19 @@
       "体體,术術,画畫,庙廟,历歷,传傳,统統,义義,为為,这這,个個,们們,时時,还還,过過,来來,长長,国國,际際,语語,认認,证證,转轉,师師,岁歲,间間,关關,点點,线線,图圖,开開,门門,问問,题題,现現,实實,应應,让讓,从從,达達,远遠,运運,进進,连連,选選,择擇,读讀,说說,请請,贵貴,买買,卖賣,货貨,质質,费費,资資,赐賜,红紅,绿綠,蓝藍,龙龍,凤鳳,云雲,风風,电電,话話,观觀,萨薩,弥彌,罗羅,汉漢,净淨,坛壇,场場,坚堅,韧韌,难難,与與,给給,对對,称稱,万萬,专專,业業,东東,亚亞,丝絲,绸綢,带帶,着著,么麼,里裡,后後,发發,复復,准準,边邊,缘緣,软軟,轻輕,触觸,亲親,仅僅,众眾,员員,会會,余餘,内內,写寫,决決,况況,几幾,则則,规規,别別,制製,办辦,动動,灵靈,势勢,学學,医醫,药藥,馆館,双雙,变變,钟鐘,乐樂,旧舊,洁潔,启啟,录錄,视視,频頻,页頁,闭閉,单單,灯燈,绘繪,玛瑪,错錯,钻鑽,铜銅,矿礦,碱鹼,浆漿,烧燒,温溫,润潤,泽澤,习習,惯慣,产產,仪儀,价價,听聽,响響,团團,圆圓,圣聖,坚堅,壳殼,处處,备備,够夠,头頭,夸誇,夹夾,夺奪,妆妝,妇婦,妈媽,姊姊,学學,宝寶,审審,宫宮,宽寬,宾賓,导導,寿壽,将將,尔爾,尘塵,尝嘗,尧堯,尽盡,层層,屉屜,届屆,属屬,屡屢,屦屨,岁歲,岂豈,岗崗,岚嵐,岛島,岭嶺,岳嶽,巩鞏,币幣,帅帥,帐帳,帘簾,帜幟,带帶,帮幫,帱幬,帻幘,帼幗,幂冪,幞幞,干乾,广廣,庆慶,庐廬,庇庇,床床,库庫,应應,庙廟,庞龐,废廢,庼庼,廪廩,开開,异異,弃棄,张張,弥彌,弪弳,弧弧,弭弭,弮弮,弯彎,彙彙,彝彝,形形,彪彪,彫彫,彬彬,彩彩,彷彷,彿彿,役役,彻徹,徂徂,征徵,径徑,待待,徇徇,很很,徉徉,徊徊,律律,後後,徐徐,徒徒,徕徠,得得,徘徘,徙徙,徜徜,從從,徠徠,御御,徨徨,復復,循循,徬徬,微微,徭徭,徯徯,徰徰,徱徱,德德,徲徲,徳徳,徴徴,徵徵,徶徶,德德,徸徸,徹徹,徺徺,徻徻,徼徼,徽徽,徾徾,徿徿,忀忀,忁忁,忂忂,心心,忄忄,必必,忒忒,忓忓,忔忔,忕忕,忖忖,忞忞,忟忟,忠忠,忡忡,忤忤,忥忥,忦忦,忧憂,忨忨,忩忩,忪忪,快快,忬忬,忭忭,忮忮,忯忯,忰忰,忱忱,忲忲,忳忳,忴忴,念念,忶忶,忷忷,忸忸,忹忹,忺忺,忻忻,忼忼,忽忽,忾愾,忿忿,怀懷,态態,怂慫,怃憮,怄慪,怅悵,怆愴,怇怇,怈怈,怉怉,怊怊,怋怋,怞怞,怤怤,怿懌,怒怒,怱怱,怲怲,怳怳,怴怴,怵怵,怶怶,怷怷,怸怸,怹怹,怺怺,怽怽,怾怾,怿懌,怎怎,怍怍,怏怏,怐怐,怑怑,怓怓,怔怔,怕怕,怖怖,怗怗,怙怙,怚怚,怛怛,怜憐,思思,怞怞,怟怟,怠怠,怡怡,急急,怦怦,性性,怨怨,怩怩,怪怪,怫怫,怱怱,怲怲,怳怳,怴怴,怵怵,怶怶,怷怷,怸怸,怹怹,怺怺,怽怽,怾怾,怿懌".split(",").forEach(function(pr){ if (pr.length >= 2) __S2T[pr.charAt(0)] = pr.charAt(1); });
       /* fix-ups: characters whose traditional form differs from the big list above */
       __S2T["系"] = "係"; __S2T["坛"] = "壇"; __S2T["复"] = "復"; __S2T["后"] = "後";
-      function __toT(s){ return s.split("").map(function(c){ return __S2T[c] || c; }).join(""); }
+      /* completion pass: every remaining simplified character used anywhere in
+         the ZH copy above (滿 顏 藝 結 觀 發 …), so Traditional mode shows no
+         simplified residue in the shop, cart, checkout or footer copy */
+      "两兩,严嚴,临臨,举舉,于於,优優,伙夥,伤傷,侣侶,兰蘭,养養,兽獸,凑湊,凭憑,刚剛,创創,剥剝,务務,却卻,参參,台臺,号號,咨諮,嚣囂,园園,围圍,块塊,坠墜,垩堊,垭埡,墙牆,奖獎,奥奧,宁寧,寝寢,岩巖,崭嶄,并並,庄莊,弹彈,强強,当當,忆憶,总總,恒恆,悬懸,惧懼,愿願,扬揚,抛拋,护護,报報,拥擁,挂掛,据據,携攜,摄攝,摊攤,数數,断斷,无無,显顯,晕暈,朴樸,机機,权權,条條,标標,样樣,档檔,欢歡,气氣,汇匯,没沒,泪淚,浅淺,测測,浏瀏,涂塗,涡渦,湿濕,满滿,炼煉,熏燻,爱愛,献獻,环環,畅暢,痴癡,盏盞,确確,碍礙,礼禮,祷禱,禅禪,离離,种種,积積,稳穩,笔筆,简簡,类類,约約,级級,纪紀,纹紋,纽紐,细細,织織,终終,绍紹,经經,绑綁,结結,绕繞,绝絕,继繼,绪緒,续續,绳繩,绷繃,缀綴,缎緞,编編,缝縫,网網,联聯,肤膚,胜勝,胶膠,脉脈,脏臟,脚腳,脱脫,脸臉,腊臘,艰艱,艺藝,节節,荣榮,莲蓮,蕴蘊,蚀蝕,装裝,见見,览覽,觉覺,计計,记記,讲講,许許,论論,设設,访訪,识識,诉訴,诚誠,询詢,诲誨,诵誦,诺諾,调調,谐諧,谢謝,谨謹,贝貝,负負,财財,责責,败敗,贪貪,贴貼,赋賦,赏賞,赖賴,赠贈,踪蹤,车車,轮輪,轴軸,载載,辈輩,辉輝,输輸,迟遲,遗遺,释釋,银銀,铺鋪,链鏈,销銷,锁鎖,锐銳,锤錘,锦錦,键鍵,镶鑲,阅閱,阳陽,阴陰,险險,随隨,隐隱,静靜,韩韓,顶頂,项項,顺順,须須,顾顧,预預,领領,颈頸,颗顆,颜顏,额額,饰飾,馈饋,马馬,驱驅,验驗,鲜鮮,麦麥,黄黃,齐齊,龛龕,余餘".split(",").forEach(function(pr){ if (pr.length >= 2) __S2T[pr.charAt(0)] = pr.charAt(1); });
+      function __toT(s){
+        var t = s.split("").map(function(c){ return __S2T[c] || c; }).join("");
+        /* phrase-level corrections a per-character map cannot express:
+           系列 (not 係列), 聯繫, 繫於, 複製, 回覆, 輕鬆, 佈滿/佈下 (but 布施
+           stays), 抵禦, 捲起, 薰香, 備註, 註明, 輪迴, 隻 as a measure word */
+        var fx = [["係列","系列"],["聯係","聯繫"],["係於","繫於"],["復製","複製"],["回復","回覆"],["輕松","輕鬆"],["布滿","佈滿"],["布下","佈下"],["抵御","抵禦"],["卷起","捲起"],["燻香","薰香"],["備注","備註"],["注明","註明"],["輪回","輪迴"],["九只眼","九隻眼"],["那只手","那隻手"]];
+        for (var i = 0; i < fx.length; i++) t = t.split(fx[i][0]).join(fx[i][1]);
+        return t;
+      }
       function __dict(lang){
         if (lang === "zh-Hans") return ZH;
         if (lang === "zh-Hant"){ var o = {}; for (var k in ZH) o[k] = __toT(ZH[k]); return o; }
@@ -3606,6 +3633,11 @@
         "Use MM / YY format.": "请使用 MM / YY 格式。",
         "Enter the 3–4 digit code.": "请输入 3–4 位安全码。",
         "Online payment is coming soon": "在线支付即将开通",
+        "WHATSAPP ORDER": "WHATSAPP 下单",
+        "VISA — COMING SOON": "VISA — 即将开通",
+        "MASTERCARD — COMING SOON": "MASTERCARD — 即将开通",
+        "PAYPAL — COMING SOON": "PAYPAL — 即将开通",
+        "Online payment is coming soon — for now, every order is placed on WhatsApp and confirmed personally before anything is paid.": "在线支付即将开通——目前每笔订单都通过 WhatsApp 下单，付款前与你亲自确认。",
         "Online payment isn't open yet. You can place this order right now on WhatsApp instead — we confirm availability, the temple blessing and delivery with you personally, and arrange payment together.": "在线支付尚未开通。你现在可以通过 WhatsApp 下单——我们会与你亲自确认库存、寺庙加持与配送，并一起安排付款。",
         "Order on WhatsApp": "通过 WhatsApp 下单",
         "Thank you": "谢谢你",
